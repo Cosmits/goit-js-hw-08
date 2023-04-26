@@ -18,22 +18,34 @@ function onPlay(data) {
     const dataStr = localStorage.getItem(VIDEO_CUR_TIME);
     if (dataStr && newSession) {
 
-        const playerSettings = JSON.parse(dataStr)
-
-        if (playerSettings.seconds + 30 >= playerSettings.duration) {
+        let playerTime = 0;
+        let playerDuration = 0;
+        
+        try {
+            const playerSettings = JSON.parse(dataStr);
+            playerDuration = playerSettings.duration;
+            playerTime = playerSettings.seconds;
+            
+        } catch (error) {
+            console.error("Set state error: ", error.message);
+            return;
+        }
+        
+        if (playerTime + 30 >= playerDuration) {
             localStorage.removeItem(VIDEO_CUR_TIME)
         } else {
-
-            player.setCurrentTime(playerSettings.seconds).then(function (seconds) {
+            player.setCurrentTime(playerTime).then(function (seconds) {
                 // seconds = the actual time that the player seeked to
             }).catch(function (error) {
                 switch (error.name) {
                     case 'RangeError':
                         // the time was less than 0 or greater than the video’s duration
+                        console.error("Set state error: ", error.message);
                         break;
 
                     default:
                         // some other error occurred
+                        console.error("Set state error: ", error.message);
                         break;
                 }
             });
