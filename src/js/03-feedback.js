@@ -15,13 +15,14 @@ form.addEventListener('input', throttle(onInputForm, 500));
 //================================================
 function onInputForm(event) {
     data[event.target.name] = event.target.value;
-    // console.log(data);
     localStorage.setItem(KEY_FOR_STORE, JSON.stringify(data));
 }
 
 function onSubmitForm(event) {
     event.preventDefault();
-
+    
+    console.log(data);
+    
     form.reset();
     localStorage.removeItem(KEY_FOR_STORE);
 }
@@ -40,7 +41,6 @@ function readDataFromLocalStorage() {
             return;
         }
 
-        console.log(playerSettings);
         for (let el in playerSettings) {
             const myInputElement = document.getElementsByName(el)[0];
             myInputElement.value = playerSettings[el];
