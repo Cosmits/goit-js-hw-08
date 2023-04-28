@@ -21,8 +21,15 @@ function onInputForm(event) {
 function onSubmitForm(event) {
     event.preventDefault();
     
+    const myInputElement = document.getElementsByName('email')[0].value;
+    const myMessageElement = document.getElementsByName('message')[0].value;
+    if (!myInputElement || !myMessageElement) {
+         alert('Please enter your email address and message !');
+         return false;
+    }
+
     console.log(data);
-    
+
     form.reset();
     localStorage.removeItem(KEY_FOR_STORE);
 }
@@ -44,6 +51,7 @@ function readDataFromLocalStorage() {
         for (let el in playerSettings) {
             const myInputElement = document.getElementsByName(el)[0];
             myInputElement.value = playerSettings[el];
+            data[el] = playerSettings[el];
         }
     }
 }
