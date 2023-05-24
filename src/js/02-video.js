@@ -38,6 +38,7 @@ function onPlay(data) {
 
 };
 
+//============================================================================
 function onTimeUpdate(data) {
     localStorage.setItem(VIDEO_CUR_TIME, JSON.stringify(data));
     newSession = false;
