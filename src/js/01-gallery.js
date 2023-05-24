@@ -1,10 +1,6 @@
-// Add imports above this line
 import { galleryItems } from './gallery-items';
-// Change code below this line
 
-// Описаний в документації
 import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const galleryUlEl = document.querySelector('.gallery');
@@ -17,9 +13,7 @@ const lightbox = new SimpleLightbox(".gallery a", {
     animationSpeed: 250,
 });
 
-//
-//~ any functions 
-//
+//================================================================
 function doGalleryList(arrGalleryItems) {
     return arrGalleryItems.map(({ preview, original, description }) => {
         //const { preview, origin, description } = el;

@@ -18,6 +18,7 @@ function onInputForm(event) {
     localStorage.setItem(KEY_FOR_STORE, JSON.stringify(data));
 }
 
+//============================================================================
 function onSubmitForm(event) {
     event.preventDefault();
     
@@ -34,6 +35,7 @@ function onSubmitForm(event) {
     localStorage.removeItem(KEY_FOR_STORE);
 }
 
+//============================================================================
 function readDataFromLocalStorage() {
 
     let playerSettings = null;
